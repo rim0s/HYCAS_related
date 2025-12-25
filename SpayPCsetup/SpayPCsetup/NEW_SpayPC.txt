@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net-net-1.0" />
+  </configSections>
+  <log4net>
+    <root>
+      <level value="ALL" />
+      <appender-ref ref="LogFileAppender" />
+    </root>
+    <!--
+    <appender name="LogFileAppender" type="log4net.Appender.FileAppender">
+      <param name="File" value="logs/spaypc.log" />
+      <param name="AppendToFile" value="true" />
+      <layout type="log4net.Layout.PatternLayout">
+        <param name="ConversionPattern" value="%d [%t]%-5p %c - %m%n" />
+      </layout>
+    </appender>-->
+    <appender name="LogFileAppender" type="log4net.Appender.RollingFileAppender">
+      <file value="logs/" />
+      <appendToFile value="true" />
+      <rollingStyle value="Size" />
+      <maxSizeRollBackups value="10" />
+      <maximumFileSize value="15MB" />
+      <staticLogFileName value="false" />
+      <param name="DatePattern" value="yyyyMMdd&quot;_spaypc.log&quot;" />
+      <param name="RollingStyle" value="Date" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%d [%t]%-5p %c - %m%n" />
+      </layout>
+    </appender>
+  </log4net>
+  <!--系统配置-->
+  <appSettings>
+    <add key="BANK_CODE" value="swiftpass_x86_update_wft" />
+    <add key="SERVERURL" value="https://spay3.swiftpass.cn/" />
+    <add key="TYPE" value="general" />
+    <add key="IS_QRLOGIN" value="0" />
+    <add key="LOGIN_USERNAME" value="13212340001" />
+    <add key="LOGIN_PASSWORD" value="" />
+    <add key="APISHOWLIST" value="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" />
+    <add key="APISHOWLISTMD5" value="3f40fa01e4daa81beb063b25d14ea20a" />
+    <add key="ClientSettingsProvider.ServiceUri" value="" />
+    <add key="IS_PROXY" value="0" />
+    <add key="PROXY_IP" value="" />
+    <add key="PROXY_PORT" value="" />
+    <add key="PROXY_USERNAME" value="" />
+    <add key="PROXY_PWD" value="" />
+    <add key="QUICKMINIOPEN" value="17@79" />
+    <add key="QUICKOUTLOGIN" value="113" />
+    <add key="QUICKSUREPAY" value="13" />
+    <add key="QUICKCHANGEPAY" value="32" />
+    <add key="QUICKCLOSEDIALOG" value="114" />
+    <add key="QUICKREPAYBACK" value="32" />
+    <add key="QUICKGOONSEARCH" value="13" />
+    <add key="QUICKPRINT" value="13" />
+<add key = "PRINT_NAME" value="Microsoft XPS Document Writer" />
+    <add key="PRINT_PAGE" value="1" />
+    <add key="PRINT_RETURNPAGE" value="1" />
+    <add key="PRINT_TIME_INTERVAL" value="0" />
+    <add key="PRINT_GOPAGE" value="125" />
+    <add key="PRINT_QRCODEWIDTH" value="150" />
+    <add key="PRINT_AUTOPRINT" value="1" />
+    <add key="PRINT_FONTSIZE" value="8" />
+    <add key="PRINT_LEFTNUM" value="2" />
+    <add key="PRINT_TOPNUM" value="2" />
+    <add key="PRINT_PIC_WIDTH" value="220" />
+    <add key="PRINT_PIC_HEIGHT" value="70" />
+    <add key="PRINT_PIC_PIXEL_WIDTH" value="" />
+    <add key="PRINT_PIC_PIXEL_HEIGHT" value="" />
+    <add key="PRINT_PICTYPE" value="1" />
+    <add key="PRINT_PTL" value="9600" />
+    <add key="PRINT_COM_CODE" value="GB2312" />
+    <add key="PRINT_ETHERNET_IP" value="" />
+    <add key="PRINT_ETHERNET_PORT" value="9100" />
+    <add key="COMMON_ISSHOWWINDOW" value="2" />
+    <add key="COMMON_ISTOP" value="1" />
+    <add key="COMMON_SEARCHCOUNT" value="10" />
+    <add key="COMMON_SEARCHINTERVAL" value="3" />
+120
+2
+    <add key="PAY_CLARITY" value="90" />
+    <add key="PAY_MONEY_LOCATION" value="1302:39:543:58" />
+    <add key="PAY_USEDWHITEFONT" value="2" />
+    <add key="PAY_MONEYUNIT" value="1" />
+1
+    <add key="PAY_HIDETIME" value="5" />
+    <add key="PAY_KEXIANCOM" value="" />
+2
+    <add key="PAY_KEXIAN_STARTNUM" value="0" />
+    <add key="PAY_KEXIAN_ENDNUM" value="0" />
+    <add key="FEIE_ISOPEN" value="2" />
+    <add key="FEIE_USER" value="" />
+    <add key="FEIE_UKEY" value="" />
+    <add key="FEIE_SN" value="" />
+    <add key="FEIE_URL" value="" />
+  </appSettings>
+  <system.web>
+    <membership defaultProvider="ClientAuthenticationMembershipProvider">
+      <providers>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" />
+      </providers>
+    </membership>
+    <roleManager defaultProvider="ClientRoleProvider" enabled="true">
+      <providers>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400" />
+      </providers>
+    </roleManager>
+  </system.web>
+</configuration>
